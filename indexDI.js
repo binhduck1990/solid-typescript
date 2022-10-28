@@ -8,11 +8,11 @@ var Main = /** @class */ (function () {
     }
     Main.prototype.changeMoney = function () {
         this.money = this.library.change(this.money);
-        return "".concat(this.money);
+        return this.money;
     };
     Main.prototype.changeBackMoney = function () {
         this.money = this.library.changeBack(this.money);
-        return "".concat(this.money);
+        return this.money;
     };
     return Main;
 }());
@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var dolaLibrary = new dola_1.Dola();
         var main_1 = new Main(money, dolaLibrary);
         dolaButton.addEventListener("click", function () {
-            moneyChanged.innerHTML = main_1.changeMoney();
+            moneyChanged.innerHTML = main_1.changeMoney().toString();
         });
         vndButton.addEventListener("click", function () {
-            moneyChanged.innerHTML = main_1.changeBackMoney();
+            moneyChanged.innerHTML = main_1.changeBackMoney().toString();
         });
     }
 });

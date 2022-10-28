@@ -2,20 +2,21 @@ import { Dola } from "./dola";
 
 class Main {
     private money: number;
-    constructor(money) {
+
+    constructor(money: number) {
         this.money = money
     }
 
-    changeMoney(): string {
+    changeMoney(): number {
         const changeMoney = new Dola()
         this.money = changeMoney.change(this.money)
-        return `${this.money}`
+        return this.money
     }
 
-    changeBackMoney(): string {
+    changeBackMoney(): number {
         const changeMoney = new Dola()
         this.money = changeMoney.changeBack(this.money)
-        return `${this.money}`
+        return this.money
     }
 }
 
@@ -26,15 +27,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const moneyChanged = document.getElementById("moneyChanged");
 
     if (moneyInput instanceof HTMLInputElement) {
-        const money = moneyInput.value
+        const money = parseInt(moneyInput.value)
         const main = new Main(money);
 
         dolaButton.addEventListener("click", function () {
-            moneyChanged.innerHTML = main.changeMoney()
+            moneyChanged.innerHTML = main.changeMoney().toString()
         })
 
         vndButton.addEventListener("click", function () {
-            moneyChanged.innerHTML = main.changeBackMoney()
+            moneyChanged.innerHTML = main.changeBackMoney().toString()
         })
     }
 });

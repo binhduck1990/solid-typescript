@@ -8,19 +8,20 @@ interface MoneyService {
 class Main {
     private money: number
     private library: MoneyService;
-    constructor(money, library) {
+
+    constructor(money: number, library: MoneyService) {
         this.money = money
         this.library = library
     }
 
-    changeMoney() {
+    changeMoney(): number {
         this.money = this.library.change(this.money)
-        return `${this.money}`
+        return this.money
     }
 
-    changeBackMoney() {
+    changeBackMoney(): number {
         this.money = this.library.changeBack(this.money)
-        return `${this.money}`
+        return this.money
     }
 }
 
@@ -36,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const main = new Main(money, dolaLibrary);
 
         dolaButton.addEventListener("click", function () {
-            moneyChanged.innerHTML = main.changeMoney()
+            moneyChanged.innerHTML = main.changeMoney().toString()
         })
 
         vndButton.addEventListener("click", function () {
-            moneyChanged.innerHTML = main.changeBackMoney()
+            moneyChanged.innerHTML = main.changeBackMoney().toString()
         })
     }
 });
